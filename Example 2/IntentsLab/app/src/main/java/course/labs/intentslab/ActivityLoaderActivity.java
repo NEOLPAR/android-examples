@@ -2,6 +2,7 @@ package course.labs.intentslab;
 
 import android.app.Activity;
 import android.content.Intent;
+import android.net.Uri;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
@@ -77,22 +78,22 @@ public class ActivityLoaderActivity extends Activity {
         
 		Log.i(TAG, "Entered startImplicitActivation()");
         
-		// TODO - Create a base intent for viewing a URL
-		// (HINT:  second parameter uses Uri.parse())
+		//  - Create a base intent for viewing a URL
+		String url = "http://www.google.com";
+        Uri uri = Uri.parse(url);
+        Intent baseIntent = new Intent(Intent.ACTION_VIEW, uri);
 		
-        Intent baseIntent = null;
-		
-		// TODO - Create a chooser intent, for choosing which Activity
+		//  - Create a chooser intent, for choosing which Activity
 		// will carry out the baseIntent
-		// (HINT: Use the Intent class' createChooser() method)
-		Intent chooserIntent = null;
-        
-        
-		Log.i(TAG,"Chooser Intent Action:" + chooserIntent.getAction());
-        
-        
-		// TODO - Start the chooser Activity, using the chooser intent
+		Intent chooserIntent = Intent.createChooser(baseIntent, url);
 
+		Log.i(TAG,"Chooser Intent Action:" + chooserIntent.getAction());
+
+		//  - Start the chooser Activity, using the chooser intent
+        // Verify the intent will resolve to at least one activity
+        if (baseIntent.resolveActivity(getPackageManager()) != null) {
+            startActivity(chooserIntent);
+        }
         
 	}
     
