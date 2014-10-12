@@ -21,11 +21,17 @@
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
-  
-            <!-- TODO - Add necessary intent filter information so that this
-                    Activity will accept Intents with the
-                    action "android.intent.action.VIEW" and with an "http"
-                    schemed URL -->
+            <intent-filter>
+                <!--  - Add necessary intent filter information so that this
+                        Activity will accept Intents with the
+                        action "android.intent.action.VIEW" and with an "http"
+                        schemed URL -->
+                <action android:name="android.intent.action.VIEW" />
+                <data android:scheme="http" />
+                <category android:name="android.intent.category.DEFAULT" />
+                <!-- The BROWSABLE category is required to get links from web pages. -->
+                <category android:name="android.intent.category.BROWSABLE" />
+            </intent-filter>
         </activity>
     </application>
 
