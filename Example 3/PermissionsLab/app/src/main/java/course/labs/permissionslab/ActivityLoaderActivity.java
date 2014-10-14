@@ -1,6 +1,7 @@
 package course.labs.permissionslab;
 
 import android.app.Activity;
+import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
@@ -31,7 +32,9 @@ public class ActivityLoaderActivity extends Activity {
 		
 		Log.i(TAG, "Entered startBookMarksActivity()");
 	
-		// TODO - Start the BookmarksActivity
+		// - Start the BookmarksActivity
+        Intent bookmarksActivityIntent = new Intent(ActivityLoaderActivity.this, BookmarksActivity.class);
 
+        startActivity(bookmarksActivityIntent);
 	}
 }
