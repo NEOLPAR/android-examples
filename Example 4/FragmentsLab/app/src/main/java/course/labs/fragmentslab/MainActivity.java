@@ -1,7 +1,6 @@
 package course.labs.fragmentslab;
 
 import android.app.Activity;
-import android.app.FragmentTransaction;
 import android.os.Bundle;
 import android.util.Log;
 
@@ -21,16 +20,20 @@ public class MainActivity extends Activity implements
 		// If the layout is single-pane, create the FriendsFragment 
 		// and add it to the Activity
 
-		if (!isInTwoPaneMode()) {
-			
+        if (!isInTwoPaneMode()) {
 			mFriendsFragment = new FriendsFragment();
 
-			//TODO 1 - add the FriendsFragment to the fragment_container
-			
-			
-			
-
-		} else {
+			// 1 - add the FriendsFragment to the fragment_container
+			getFragmentManager().beginTransaction()
+                    .add(R.id.fragment_container, mFriendsFragment)
+                    .commit();
+			/*
+            FragmentManager mFragmentManager = getFragmentManager();
+            FragmentTransaction fragmentTransaction = mFragmentManager.beginTransaction();
+            fragmentTransaction.add(R.id.fragment_container, mFriendsFragment);
+            fragmentTransaction.commit();
+            */
+        } else {
 
 			// Otherwise, save a reference to the FeedFragment for later use
 
@@ -64,10 +67,11 @@ public class MainActivity extends Activity implements
 
 		if (!isInTwoPaneMode()) {
 
-			//TODO 2 - replace the fragment_container with the FeedFragment
-			
-
-			
+			// 2 - replace the fragment_container with the FeedFragment
+			getFragmentManager().beginTransaction()
+                    .replace(R.id.fragment_container, mFeedFragment)
+                    .addToBackStack(null)
+                    .commit();
 
 			// execute transaction now
 			getFragmentManager().executePendingTransactions();
