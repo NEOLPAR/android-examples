@@ -1,4 +1,4 @@
-package course.labs.permissionslab.test;
+package course.labs.permissionslab;
 
 import android.content.ComponentName;
 import android.content.pm.ActivityInfo;

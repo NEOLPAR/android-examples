@@ -1,4 +1,4 @@
-package course.labs.permissionslab.test;
+package course.labs.permissionslab;
 
 import android.test.ActivityInstrumentationTestCase2;
 
