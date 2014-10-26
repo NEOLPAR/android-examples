@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="box1">#fffc962f</color>
+    <color name="box2">#ff5cbbfc</color>
+    <color name="box3">#ffa132fc</color>
+    <color name="box4">#ff5dba3d</color>
+    <color name="box5">#fffc0f24</color>
+    <color name="box6">#ffffffff</color>
+    <color name="box7">#fffcfc47</color>
+</resources>

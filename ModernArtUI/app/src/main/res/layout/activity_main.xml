@@ -1,0 +1,80 @@
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:layout_margin="2.5dp"
+    tools:context=".mainActivity">
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:orientation="horizontal"
+        android:layout_weight="15">
+        <LinearLayout
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:orientation="vertical"
+            android:layout_weight="2">
+            <View
+                android:id="@+id/colored_bar"
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                android:layout_margin="2.5dp"
+                android:background="@color/box1"
+                android:layout_weight="3" />
+            <View
+                android:id="@+id/colored_bar2"
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                android:layout_margin="2.5dp"
+                android:background="@color/box2"
+                android:layout_weight="2" />
+            <View
+                android:id="@+id/colored_bar3"
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                android:layout_margin="2.5dp"
+                android:background="@color/box3"
+                android:layout_weight="3" />
+        </LinearLayout>
+        <LinearLayout
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:orientation="vertical"
+            android:layout_weight="3">
+            <View
+                android:id="@+id/colored_bar4"
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                android:layout_margin="2.5dp"
+                android:background="@color/box4"
+                android:layout_weight="3" />
+            <View
+                android:id="@+id/colored_bar5"
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                android:layout_margin="2.5dp"
+                android:background="@color/box5"
+                android:layout_weight="2" />
+            <View
+                android:id="@+id/colored_bar6"
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                android:layout_margin="2.5dp"
+                android:background="@color/box6"
+                android:layout_weight="3" />
+            <View
+                android:id="@+id/colored_bar7"
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                android:layout_margin="2.5dp"
+                android:background="@color/box7"
+                android:layout_weight="2" />
+        </LinearLayout>
+    </LinearLayout>
+    <SeekBar
+        android:id="@+id/seekbar"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1" />
+</LinearLayout>

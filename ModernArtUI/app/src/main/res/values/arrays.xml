@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <array name="boxIdArray">
+        <item>@id/colored_bar</item>
+        <item>@id/colored_bar2</item>
+        <item>@id/colored_bar3</item>
+        <item>@id/colored_bar4</item>
+        <item>@id/colored_bar5</item>
+        <item>@id/colored_bar6</item>
+        <item>@id/colored_bar7</item>
+    </array>
+
+    <array name="colorBoxArray">
+        <item>@color/box1</item>
+        <item>@color/box2</item>
+        <item>@color/box3</item>
+        <item>@color/box4</item>
+        <item>@color/box5</item>
+        <item>@color/box6</item>
+        <item>@color/box7</item>
+    </array>
+</resources>
