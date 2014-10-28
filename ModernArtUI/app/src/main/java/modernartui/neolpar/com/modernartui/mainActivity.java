@@ -1,9 +1,11 @@
 package modernartui.neolpar.com.modernartui;
 
 import android.app.Activity;
+import android.app.DialogFragment;
 import android.content.res.TypedArray;
 import android.graphics.Color;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
@@ -12,7 +14,7 @@ import android.widget.SeekBar;
 import java.util.ArrayList;
 
 
-public class mainActivity extends Activity {
+public class MainActivity extends Activity {
 
     private static String LOGGER = "L";
     private SeekBar seekBar;
@@ -54,7 +56,7 @@ public class mainActivity extends Activity {
     }
 
     private int recalculateColor(int color, int progress){
-        int green = Color.green(color) + progress;
+        int green = Color.green(color) + progress*2;
 
         return Color.argb(
                 Color.alpha(color),
@@ -76,10 +78,17 @@ public class mainActivity extends Activity {
         // automatically handle clicks on the Home/Up button, so long
         // as you specify a parent activity in AndroidManifest.xml.
         int id = item.getItemId();
-        if (id == R.id.action_settings) {
-            return true;
+        if (id == R.id.action_more_information) {
+            moreInformationSelected();
         }
         return super.onOptionsItemSelected(item);
+    }
+
+    private void moreInformationSelected(){
+        Log.i(LOGGER, "more information clicked");
+
+        DialogFragment newFragment = new MoreInformationDialogFragment();
+        newFragment.show(getFragmentManager(), MoreInformationDialogFragment.TAG_NAME);
     }
 
 }
