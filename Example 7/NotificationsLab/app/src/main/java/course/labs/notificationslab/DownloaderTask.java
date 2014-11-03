@@ -1,14 +1,5 @@
 package course.labs.notificationslab;
 
-import java.io.BufferedReader;
-import java.io.BufferedWriter;
-import java.io.FileOutputStream;
-import java.io.IOException;
-import java.io.InputStream;
-import java.io.InputStreamReader;
-import java.io.OutputStreamWriter;
-import java.io.PrintWriter;
-
 import android.app.Notification;
 import android.app.NotificationManager;
 import android.app.PendingIntent;
@@ -18,6 +9,15 @@ import android.content.Intent;
 import android.os.AsyncTask;
 import android.util.Log;
 import android.widget.RemoteViews;
+
+import java.io.BufferedReader;
+import java.io.BufferedWriter;
+import java.io.FileOutputStream;
+import java.io.IOException;
+import java.io.InputStream;
+import java.io.InputStreamReader;
+import java.io.OutputStreamWriter;
+import java.io.PrintWriter;
 
 public class DownloaderTask extends AsyncTask<String, Void, String[]> {
 
@@ -152,52 +152,46 @@ public class DownloaderTask extends AsyncTask<String, Void, String[]> {
 						Log.i(TAG,
 								"Entered result receiver's onReceive() method");
 
-						// TODO: Check whether the result code is not MainActivity.IS_ALIVE
+						// Check whether the result code is not MainActivity.IS_ALIVE
+                        if(getResultCode() != MainActivity.IS_ALIVE){
 
-						if (false || true) {
-
-							// TODO: If so, create a PendingIntent using the
+							// If so, create a PendingIntent using the
 							// restartMainActivityIntent and set its flags
 							// to FLAG_UPDATE_CURRENT
-
-
-
-							
-							
+                            PendingIntent pendingIntent = PendingIntent.getBroadcast(mApplicationContext, 0,
+                                    restartMainActivtyIntent, PendingIntent.FLAG_UPDATE_CURRENT);
 
 							// Uses R.layout.custom_notification for the
 							// layout of the notification View. The xml
 							// file is in res/layout/custom_notification.xml
-
 							RemoteViews mContentView = new RemoteViews(
 									mApplicationContext.getPackageName(),
 									R.layout.custom_notification);
 
-							// TODO: Set the notification View's text to
+							// Set the notification View's text to
 							// reflect whether the download completed
 							// successfully
+                            mContentView.setTextViewText(R.id.text, "Download completed succesfully!");
 
-
-
-							
-
-							// TODO: Use the Notification.Builder class to
+							// Use the Notification.Builder class to
 							// create the Notification. You will have to set
 							// several pieces of information. You can use
 							// android.R.drawable.stat_sys_warning
 							// for the small icon. You should also
 							// setAutoCancel(true).
+                            Notification.Builder notificationBuilder = new Notification.Builder(mApplicationContext)
+                                    .setTicker("Alarm received")
+                                    .setSmallIcon(android.R.drawable.stat_sys_warning)
+                                    .setAutoCancel(true)
+                                    .setContentIntent(pendingIntent)
+                                    .setContent(mContentView);
 
+							// Send the notification
+                            NotificationManager mNotificationManager =
+                                    (NotificationManager) mApplicationContext.getSystemService(Context.NOTIFICATION_SERVICE);
 
+                            mNotificationManager.notify(MY_NOTIFICATION_ID, notificationBuilder.build());
 
-							
-							
-							
-							
-							// TODO: Send the notification
-
-
-							
 							
 
 							Log.i(TAG, "Notification Area Notification sent");

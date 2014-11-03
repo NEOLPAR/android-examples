@@ -1,8 +1,8 @@
-package course.labs.notificationslab.test;
+package course.labs.notificationslab;
 
-import course.labs.notificationslab.TestFrontEndActivity;
-import com.robotium.solo.*;
 import android.test.ActivityInstrumentationTestCase2;
+
+import com.robotium.solo.Solo;
 
 public class OldFeedWithNotificationTest extends
 		ActivityInstrumentationTestCase2<TestFrontEndActivity> {

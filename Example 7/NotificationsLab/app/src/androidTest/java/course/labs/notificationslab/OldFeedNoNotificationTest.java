@@ -1,4 +1,4 @@
-package course.labs.notificationslab.test;
+package course.labs.notificationslab;
 
 import course.labs.notificationslab.TestFrontEndActivity;
 import com.robotium.solo.*;

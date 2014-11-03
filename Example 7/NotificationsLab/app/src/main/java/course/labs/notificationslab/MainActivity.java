@@ -6,8 +6,10 @@ import android.app.FragmentTransaction;
 import android.content.BroadcastReceiver;
 import android.content.Context;
 import android.content.Intent;
+import android.content.IntentFilter;
 import android.os.Bundle;
 import android.util.Log;
+import android.widget.Toast;
 
 import org.json.JSONArray;
 import org.json.JSONException;
@@ -82,14 +84,11 @@ public class MainActivity extends Activity implements SelectionListener {
 
 		if (!mIsFresh) {
 
-			// TODO:
-			// Show a Toast Notification to inform user that 
+			// Show a Toast Notification to inform user that
 			// the app is "Downloading Tweets from Network"
 			Log.i (TAG,"Issuing Toast Message");
 
-
-			
-			
+            Toast.makeText(getApplicationContext(), "Downloading Tweets from Network", Toast.LENGTH_SHORT).show();
 
 			new DownloaderTask(this).execute(URL_TSWIFT, URL_RBLACK, URL_LGAGA);
 
@@ -102,15 +101,13 @@ public class MainActivity extends Activity implements SelectionListener {
 
 					Log.i(TAG,"BroadcastIntent received in MainActivity");
 					
-					// TODO:				
 					// Check to make sure this is an ordered broadcast
 					// Let sender know that the Intent was received
 					// by setting result code to MainActivity.IS_ALIVE
 
-					
-
-
-					
+                    if(isOrderedBroadcast()){
+                        setResultCode(MainActivity.IS_ALIVE);
+                    }
 				}
 			};
 
@@ -180,25 +177,24 @@ public class MainActivity extends Activity implements SelectionListener {
 	protected void onResume() {
 		super.onResume();
 
-		// TODO:
-		// Register the BroadcastReceiver to receive a 
+		// Register the BroadcastReceiver to receive a
 		// DATA_REFRESHED_ACTION broadcast
 
-		
-		
-		
+        registerReceiver(mRefreshReceiver, new IntentFilter(DATA_REFRESHED_ACTION));
 	}
 
 	@Override
 	protected void onPause() {
 
-		// TODO:
 		// Unregister the BroadcastReceiver if it has been registered
         // Note: To work around a Robotium issue - check that the BroadcastReceiver
         // is not null before you try to unregister it
-        
 
-		
+        try {
+            unregisterReceiver(mRefreshReceiver);
+        } catch (IllegalArgumentException e) {
+            // Do nothing
+        }
 		
 		
 		super.onPause();
